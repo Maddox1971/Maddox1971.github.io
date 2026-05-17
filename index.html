@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lyra Bitperfect | Audio de Alta Fidelidad para Android</title>
+    <title>Lyra Bitperfect | High-Fidelity Audio Player for Android</title>
     <style>
         :root {
             --bg-color: #0d0f12;
@@ -24,11 +24,40 @@
             padding: 0;
         }
 
+        /* Selector de Idioma */
+        .lang-switcher {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .lang-btn {
+            background: #1e2530;
+            border: 1px solid #222733;
+            color: var(--text-muted);
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--accent-gold);
+            color: #000;
+            border-color: var(--accent-gold);
+        }
+
         header {
             text-align: center;
             padding: 4rem 2rem;
             background: linear-gradient(180deg, #161a22 0%, #0d0f12 100%);
             border-bottom: 1px solid #222733;
+            position: relative;
         }
 
         .header-logo {
@@ -189,91 +218,127 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.6);
             border-radius: 50%;
         }
+
+        /* Control de visualización: Ahora arranca en INGLÉS por defecto */
+        [lang="es"] { display: none; }
+        body.lang-es [lang="en"] { display: none; }
+        body.lang-es [lang="es"] { display: inline; }
+        body.lang-es div[lang="es"], body.lang-es section[lang="es"], body.lang-es tr[lang="es"] { display: block; }
+        body.lang-es grid[lang="es"] { display: grid; }
     </style>
 </head>
-<body>
+<body class="lang-en"> <header>
+        <div class="lang-switcher">
+            <button class="lang-btn active" id="btn-en" onclick="setLang('en')">ENG</button>
+            <button class="lang-btn" id="btn-es" onclick="setLang('es')">ESP</button>
+        </div>
 
-    <header>
         <img src="logo_lyra.png" alt="LYRA - Lossless Yield Reference Audio" class="header-logo">
-        <p class="subtitle">Reproductor de Audio de Alta Fidelidad para Android</p>
-        <a href="Lyra Informe Técnico.pdf" class="btn" download>Descargar Informe Técnico Completo (PDF)</a>
+        
+        <p class="subtitle" lang="es">Reproductor de Audio de Alta Fidelidad para Android</p>
+        <p class="subtitle" lang="en">High-Fidelity Audio Player for Android</p>
+        
+        <a href="Lyra_Bitperfect_Technical_Report.pdf" class="btn" download lang="es">Descargar Informe Técnico Completo (PDF)</a>
+        <a href="Lyra_Bitperfect_Technical_Report.pdf" class="btn" download lang="en">Download Full Technical Report (PDF)</a>
     </header>
 
     <div class="container">
         
         <section class="section">
-            <h2>El Concepto: Un Objeto Físico de Alta Gama</h2>
-            <p>Lyra Bitperfect no es simplemente un reproductor de música; es una declaración de principios sobre cómo debería sonar y sentirse el audio en un dispositivo móvil. Diseñada bajo la influencia estética de los equipos analógicos clásicos de los años 70 y 80 (como McIntosh o Marantz), combina texturas realistas y potenciómetros físicos de alta precisión con una arquitectura de audio avanzada que elimina el procesado innecesario.</p>
+            <div lang="es">
+                <h2>El Concepto: Un Objeto Físico de Alta Gama</h2>
+                <p>Lyra Bitperfect no es simplemente un reproductor de música; es una declaración de principios sobre cómo debería sonar y sentirse el audio en un dispositivo móvil. Diseñada bajo la influencia estética de los equipos analógicos clásicos de los años 70 y 80 (como McIntosh o Marantz), combina texturas realistas y potenciómetros físicos de alta precisión con una arquitectura de audio avanzada que elimina el procesado innecesario.</p>
+            </div>
+            <div lang="en">
+                <h2>The Concept: A High-End Physical Object</h2>
+                <p>Lyra Bitperfect is not just a music player; it is a statement of principles on how audio should sound and feel on a mobile device. Designed under the aesthetic influence of classic analog gear from the 70s and 80s (like McIntosh or Marantz), it combines realistic textures and high-precision physical knobs with an advanced audio architecture that eliminates unnecessary processing.</p>
+            </div>
         </section>
 
         <section class="section">
-            <h2>Arquitectura de Audio: Los Tres Estados</h2>
-            <p>Mientras la mayoría de reproductores añaden capas de procesado digital, Lyra trabaja en sentido contrario: eliminar todo lo que se interpone entre el archivo original y tu oído.</p>
+            <h2 lang="es">Arquitectura de Audio: Los Tres Estados</h2>
+            <h2 lang="en">Audio Architecture: The Three States</h2>
+            
+            <p lang="es">Mientras la mayoría de reproductores añaden capas de procesado digital, Lyra trabaja en sentido contrario: eliminar todo lo que se interpone entre el archivo original y tu oído.</p>
+            <p lang="en">While most players add digital processing layers, Lyra works in the opposite direction: removing everything that stands between the original file and your ear.</p>
             
             <div class="grid-modos">
                 <div class="card-modo">
-                    <span class="led-indicator led-white"></span><strong>Modo Normal</strong>
-                    <p>Cadena de señal estándar con ecualizador paramétrico de 3 bandas activo, controlado de forma continua mediante knobs táctiles con física de torque tangencial.</p>
+                    <span class="led-indicator led-white"></span>
+                    <strong lang="es">Modo Normal</strong><strong lang="en">Normal Mode</strong>
+                    <p lang="es">Cadena de señal estándar con ecualizador paramétrico de 3 bandas activo, controlado de forma continua mediante knobs táctiles con física de torque tangencial.</p>
+                    <p lang="en">Standard signal chain with active 3-band parametric equalizer, continuously controlled via tactile knobs with tangential torque physics.</p>
                 </div>
                 <div class="card-modo">
-                    <span class="led-indicator led-green"></span><strong>Direct Mode</strong>
-                    <p>Desactiva por completo el ecualizador nativo, minimiza el procesado del sistema operativo y conmuta el hardware al modo HiFi ("hifi_mode=on") para lograr la máxima transparencia interna.</p>
+                    <span class="led-indicator led-green"></span>
+                    <strong lang="es">Direct Mode</strong><strong lang="en">Direct Mode</strong>
+                    <p lang="es">Desactiva por completo el ecualizador nativo, minimiza el procesado del sistema operativo y conmuta el hardware al modo HiFi ("hifi_mode=on") para lograr la máxima transparencia interna.</p>
+                    <p lang="en">Completely disables the native equalizer, minimizes OS processing, and switches hardware to HiFi mode ("hifi_mode=on") for maximum internal transparency.</p>
                 </div>
                 <div class="card-modo">
-                    <span class="led-indicator led-blue"></span><strong>Bitperfect USB</strong>
-                    <p>Se activa automáticamente al detección de un DAC externo (UAC1/UAC2). Cada bit del archivo se envía de forma íntegra y sin alteraciones directamente al hardware externo, tiñendo el CD giratorio de azul marino.</p>
+                    <span class="led-indicator led-blue"></span>
+                    <strong lang="es">Bitperfect USB</strong><strong lang="en">Bitperfect USB</strong>
+                    <p lang="es">Se activa automáticamente al detección de un DAC externo (UAC1/UAC2). Cada bit del archivo se envía de forma íntegra y sin alteraciones directamente al hardware externo, tiñendo el CD giratorio de azul marino.</p>
+                    <p lang="en">Automatically activates upon detecting an external DAC (UAC1/UAC2). Each bit of the file is sent fully unaltered directly to the external hardware, turning the spinning CD deep navy blue.</p>
                 </div>
             </div>
         </section>
 
         <section class="section">
-            <h2>Instrumentos de Medición en Tiempo Real</h2>
-            <p>Haciendo un doble toque sobre el display, la pantalla del reproductor conmuta de forma animada entre tres potentes herramientas científicas alimentadas por una captura de onda real a 20.000 Hz. No son animaciones decorativas; son mediciones estrictamente reales.</p>
+            <h2 lang="es">Instrumentos de Medición en Tiempo Real</h2>
+            <h2 lang="en">Real-Time Measurement Instruments</h2>
+            
+            <p lang="es">Haciendo un doble toque sobre el display, la pantalla del reproductor conmuta de forma animada entre tres potentes herramientas científicas alimentadas por una captura de onda real a 20.000 Hz. No son animaciones decorativas; son mediciones estrictamente reales.</p>
+            <p lang="en">By double-tapping the display, the player interface animatedly switches between three powerful scientific tools driven by a real 20,000 Hz waveform capture. These are not decorative animations; they are strictly real measurements.</p>
             
             <div class="grid-capturas">
                 <div class="card-captura">
                     <img src="vu meter.jpg" alt="VU Meter Balístico">
-                    <h3>VU Meter Analógico</h3>
-                    <p>Dos agujas con simulación física de muelle y amortiguación electromagnética que responden fielmente al nivel RMS real de los canales izquierdo y derecho.</p>
+                    <h3 lang="es">VU Meter Analógico</h3><h3 lang="en">Analog VU Meter</h3>
+                    <p lang="es">Dos agujas con simulación física de muelle y amortiguación electromagnética que responden fielmente al nivel RMS real de los canales izquierdo y derecho.</p>
+                    <p lang="en">Twin needles with spring physics simulation and electromagnetic damping that faithfully respond to the real RMS level of the left and right channels.</p>
                 </div>
 
                 <div class="card-captura">
                     <img src="goniometro.jpg" alt="Goniómetro Lissajous">
-                    <h3>Goniómetro / Vectorscope</h3>
-                    <p>Muestra la imagen estéreo y la relación de fase mediante figuras de Lissajous calibradas a 45° con un trail de persistencia exponencial fosforescente.</p>
+                    <h3 lang="es">Goniómetro / Vectorscope</h3><h3 lang="en">Goniometer / Vectorscope</h3>
+                    <p lang="es">Muestra la imagen estéreo y la relación de fase mediante figuras de Lissajous calibradas a 45° con un trail de persistencia exponencial fosforescente.</p>
+                    <p lang="en">Displays stereo imaging and phase relationship using 45°-calibrated Lissajous figures with a phosphorescent exponential persistence trail.</p>
                 </div>
 
                 <div class="card-captura">
                     <img src="libreria.jpg" alt="Biblioteca y Gestión">
-                    <h3>Gestión de Biblioteca</h3>
-                    <p>Exploración fluida de hasta 1.000 pistas locales organizadas en 5 vistas sin interrumpir jamás la reproducción activa de fondo.</p>
+                    <h3 lang="es">Gestión de Biblioteca</h3><h3 lang="en">Library Management</h3>
+                    <p lang="es">Exploración fluida de hasta 1.000 pistas locales organizadas en 5 vistas sin interrumpir jamás la reproducción activa de fondo.</p>
+                    <p lang="en">Seamless browsing of up to 1,000 local tracks organized across 5 views without ever interrupting active background playback.</p>
                 </div>
             </div>
 
             <div class="grid-miniaturas">
-                <div class="card-captura"><img src="dac.jpg" alt="Detección DAC USB"><p>Detección de Hardware Externo</p></div>
-                <div class="card-captura"><img src="ecualizador.jpg" alt="EQ Paramétrico"><p>Ajuste Físico del EQ</p></div>
-                <div class="card-captura"><img src="led blanco.jpg" alt="LED Blanco"><p>LED Estado Normal</p></div>
-                <div class="card-captura"><img src="led verde.jpg" alt="LED Verde"><p>LED Direct Mode</p></div>
+                <div class="card-captura"><img src="dac.jpg" alt="Detección DAC USB"><p lang="es">Detección de Hardware Externo</p><p lang="en">External Hardware Detection</p></div>
+                <div class="card-captura"><img src="ecualizador.jpg" alt="EQ Paramétrico"><p lang="es">Ajuste Físico del EQ</p><p lang="en">Physical EQ Adjustment</p></div>
+                <div class="card-captura"><img src="led blanco.jpg" alt="LED Blanco"><p lang="es">LED Estado Normal</p><p lang="en">Normal Status LED</p></div>
+                <div class="card-captura"><img src="led verde.jpg" alt="LED Verde"><p lang="es">LED Direct Mode</p><p lang="en">Direct Mode LED</p></div>
             </div>
         </section>
 
         <section class="section">
-            <h2>Especificaciones de Ingeniería</h2>
+            <h2 lang="es">Especificaciones de Ingeniería</h2>
+            <h2 lang="en">Engineering Specifications</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Componente</th>
-                        <th>Especificación Técnica Oficial</th>
+                        <th lang="es">Componente</th><th lang="en">Component</th>
+                        <th lang="es">Especificación Técnica Oficial</th><th lang="en">Official Technical Specification</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td><strong>Entorno Operativo</strong></td><td>Android 5.0+ (API 21) | Desarrollo en Flutter/Dart con núcleo nativo Kotlin</td></tr>
-                    <tr><td><strong>Formatos de Audio</strong></td><td>FLAC, MP3, WAV, AAC, M4A, OGG, AIFF, OPUS (Reproducción Gapless)</td></tr>
-                    <tr><td><strong>Ecualizador</strong></td><td>3 bandas paramétricas (±1500 mB) sobre hardware nativo Android AudioFX</td></tr>
-                    <tr><td><strong>Compatibilidad USB</strong></td><td>Soporte nativo para USB Audio Class 1 y 2 (FiiO, iBasso, DragonFly, etc.)</td></tr>
-                    <tr><td><strong>Captura Digital</strong></td><td>Android Visualizer a 20.000 Hz con distribución unificada por EventChannel</td></tr>
-                    <tr><td><strong>Modelo Comercial</strong></td><td>€7 pago único. Sin anuncios, sin suscripciones, privacidad total</td></tr>
+                    <tr><td><strong lang="es">Entorno Operativo</strong><strong lang="en">Operating Environment</strong></td><td>Android 5.0+ (API 21) | Development in Flutter/Dart with Kotlin native core</td></tr>
+                    <tr><td><strong lang="es">Formatos de Audio</strong><strong lang="en">Audio Formats</strong></td><td>FLAC, MP3, WAV, AAC, M4A, OGG, AIFF, OPUS (Gapless Playback)</td></tr>
+                    <tr><td><strong lang="es">Ecualizador</strong><strong lang="en">Equalizer</strong></td><td lang="es">3 bandas paramétricas (±1500 mB) sobre hardware nativo Android AudioFX</td><td lang="en">3 parametric bands (±1500 mB) on native Android AudioFX hardware</td></tr>
+                    <tr><td><strong lang="es">Compatibilidad USB</strong><strong lang="en">USB Compatibility</strong></td><td lang="es">Soporte nativo para USB Audio Class 1 y 2 (FiiO, iBasso, DragonFly, etc.)</td><td lang="en">Native support for USB Audio Class 1 and 2 (FiiO, iBasso, DragonFly, etc.)</td></tr>
+                    <tr><td><strong lang="es">Captura Digital</strong><strong lang="en">Digital Capture</strong></td><td lang="es">Android Visualizer a 20.000 Hz con distribución unificada por EventChannel</td><td lang="en">Android Visualizer at 20,000 Hz with unified EventChannel distribution</td></tr>
+                    <tr><td><strong lang="es">Modelo Comercial</strong><strong lang="en">Commercial Model</strong></td><td lang="es">€8 pago único. Sin anuncios, sin suscripciones, privacidad total</td><td lang="en">€8 single payment. No ads, no subscriptions, full privacy</td></tr>
                 </tbody>
             </table>
         </section>
@@ -281,10 +346,32 @@
     </div>
 
     <footer>
-        <p>© 2026 Lyra Bitperfect. Desarrollado con Flutter y Kotlin para Android.</p>
-        <p>"Una interfaz que no parece una app, sino un objeto físico de 5.000€"</p>
+        <p lang="es">© 2026 Lyra Bitperfect. Desarrollado con Flutter y Kotlin para Android.</p>
+        <p lang="en">© 2026 Lyra Bitperfect. Developed with Flutter and Kotlin for Android.</p>
+        
+        <p lang="es">"Una interfaz que no parece una app, sino un objeto físico de 5.000€"</p>
+        <p lang="en">"An interface that doesn't look like an app, but a €5,000 physical object"</p>
+        
         <img src="Logo 512.png" alt="Sello de Calidad Lyra Gold" class="footer-logo">
     </footer>
 
+    <script>
+        function setLang(lang) {
+            const body = document.body;
+            const btnEn = document.getElementById('btn-en');
+            const btnEs = document.getElementById('btn-es');
+            
+            btnEn.classList.remove('active');
+            btnEs.classList.remove('active');
+            
+            if (lang === 'es') {
+                body.className = 'lang-es';
+                btnEs.classList.add('active');
+            } else {
+                body.className = 'lang-en';
+                btnEn.classList.add('active');
+            }
+        }
+    </script>
 </body>
 </html>
