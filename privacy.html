@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyra Bitperfect | Privacy Policy</title>
+    <style>
+        :root {
+            --bg-color: #0d0f12;
+            --card-bg: #161a22;
+            --accent-gold: #d4af37;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        /* Language switcher */
+        .lang-switcher {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .lang-btn {
+            background: #1e2530;
+            border: 1px solid #222733;
+            color: var(--text-muted);
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--accent-gold);
+            color: #000;
+            border-color: var(--accent-gold);
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 3.5rem 2rem 2.5rem;
+            background: linear-gradient(180deg, #161a22 0%, #0d0f12 100%);
+            border-bottom: 1px solid #222733;
+            position: relative;
+        }
+
+        .header-logo {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
+        }
+
+        header h1 {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 1.2rem;
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border: 1px solid #2a2e3a;
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .back-link:hover {
+            background: #1e2530;
+        }
+
+        /* Content */
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 3rem 2rem 5rem;
+        }
+
+        .policy-section {
+            margin-bottom: 2.5rem;
+            background: var(--card-bg);
+            border: 1px solid #222733;
+            border-radius: 8px;
+            padding: 1.8rem 2rem;
+        }
+
+        .policy-section h2 {
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid #222733;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .section-num {
+            background: var(--accent-gold);
+            color: #000;
+            font-size: 0.75rem;
+            font-weight: 900;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .policy-section p {
+            color: var(--text-main);
+            font-size: 0.97rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .policy-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .policy-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .policy-section ul li {
+            padding: 0.6rem 0 0.6rem 1.2rem;
+            border-bottom: 1px solid #1e2530;
+            font-size: 0.97rem;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .policy-section ul li:last-child {
+            border-bottom: none;
+        }
+
+        .policy-section ul li::before {
+            content: '—';
+            color: var(--accent-gold);
+            position: absolute;
+            left: 0;
+        }
+
+        .policy-section ul li strong {
+            color: var(--accent-gold);
+        }
+
+        .zero-badge {
+            display: inline-block;
+            background: #0d2a1a;
+            border: 1px solid #1a5c36;
+            color: #4ade80;
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 3px;
+            letter-spacing: 1px;
+            margin-left: 0.4rem;
+            vertical-align: middle;
+        }
+
+        .contact-box {
+            background: #0d0f12;
+            border: 1px solid #2a2e3a;
+            border-radius: 6px;
+            padding: 1.2rem 1.5rem;
+            margin-top: 0.8rem;
+        }
+
+        .contact-box a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        .contact-box a:hover {
+            text-decoration: underline;
+        }
+
+        .last-updated {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            border-top: 1px solid #222733;
+            background-color: #090b0e;
+        }
+
+        footer img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: block;
+            margin: 1rem auto 0;
+            opacity: 0.7;
+        }
+
+        /* Language control */
+        [lang="es"] { display: none; }
+        body.lang-es [lang="en"] { display: none; }
+        body.lang-es [lang="es"] { display: block; }
+        body.lang-es span[lang="es"] { display: inline; }
+        span[lang="en"] { display: inline; }
+        body.lang-es span[lang="en"] { display: none; }
+    </style>
+</head>
+<body class="lang-en">
+
+<header>
+    <div class="lang-switcher">
+        <button class="lang-btn active" id="btn-en" onclick="setLang('en')">ENG</button>
+        <button class="lang-btn" id="btn-es" onclick="setLang('es')">ESP</button>
+    </div>
+
+    <img src="Logo_512.png" alt="Lyra Bitperfect" class="header-logo">
+
+    <h1>
+        <span lang="en">PRIVACY POLICY</span>
+        <span lang="es">POLÍTICA DE PRIVACIDAD</span>
+    </h1>
+    <p>LYRA BITPERFECT</p>
+
+    <a href="index.html" class="back-link">
+        <span lang="en">← Back to main site</span>
+        <span lang="es">← Volver al sitio principal</span>
+    </a>
+</header>
+
+<div class="container">
+
+    <p class="last-updated">
+        <span lang="en">Last Updated: May 2026</span>
+        <span lang="es">Última actualización: Mayo 2026</span>
+    </p>
+
+    <!-- SECTION 1 -->
+    <div class="policy-section">
+        <h2>
+            <span class="section-num">1</span>
+            <span lang="en">Overview</span>
+            <span lang="es">Descripción General</span>
+        </h2>
+        <div lang="en">
+            <p>This Privacy Policy governs the privacy practices of <strong>LYRA: Lossless Yield Reference Audio</strong> (the "Application"). We are committed to protecting user privacy and ensuring a secure, transparent environment.</p>
+            <p>LYRA is a premium digital audio transport engine designed for high-fidelity audio playback. <strong>We do not collect, store, track, or share any personal data, audio files, or user behavior.</strong> <span class="zero-badge">ZERO DATA</span></p>
+        </div>
+        <div lang="es">
+            <p>Esta Política de Privacidad rige las prácticas de privacidad de <strong>LYRA: Lossless Yield Reference Audio</strong> (la "Aplicación"). Estamos comprometidos con la protección de la privacidad del usuario y con garantizar un entorno seguro y transparente.</p>
+            <p>LYRA es un motor de transporte de audio digital premium diseñado para la reproducción de audio de alta fidelidad. <strong>No recopilamos, almacenamos, rastreamos ni compartimos ningún dato personal, archivo de audio ni comportamiento del usuario.</strong> <span class="zero-badge">CERO DATOS</span></p>
+        </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="policy-section">
+        <h2>
+            <span class="section-num">2</span>
+            <span lang="en">Permissions Requested and Justification</span>
+            <span lang="es">Permisos Solicitados y Justificación</span>
+        </h2>
+        <div lang="en">
+            <p>To deliver high-resolution bit-perfect audio bypassing the default Android audio stack, the Application requires specific hardware-level permissions. These permissions are used strictly in real-time and are never transmitted over the network:</p>
+            <ul>
+                <li><strong>READ_EXTERNAL_STORAGE / MANAGE_EXTERNAL_STORAGE:</strong> Required exclusively to index, look up, and play your local high-resolution master audio files (ALAC, AIFF, FLAC, WAV, MP3, OGG, OPUS) stored on your device. LYRA does not modify or delete your files.</li>
+                <li><strong>USB Host Mode / USB Hardware Access:</strong> Required to bypass the Android Hardware Abstraction Layer (HAL) and gain direct access to your external Digital-to-Analog Converter (DAC). This is mandatory to achieve true Bit-Perfect native playback.</li>
+                <li><strong>VIBRATE / HAPTIC FEEDBACK:</strong> Used strictly to drive the physical simulation mechanics when interacting with the application's analog-style knobs and UI controls.</li>
+                <li><strong>RECORD_AUDIO:</strong> Required by the Android Visualizer API to capture the audio output waveform in real-time for the VU Meter and Goniometer measurement instruments. No audio is ever recorded or stored.</li>
+            </ul>
+        </div>
+        <div lang="es">
+            <p>Para ofrecer audio bit-perfect de alta resolución evitando la pila de audio predeterminada de Android, la Aplicación requiere permisos específicos a nivel de hardware. Estos permisos se utilizan estrictamente en tiempo real y nunca se transmiten a través de la red:</p>
+            <ul>
+                <li><strong>READ_EXTERNAL_STORAGE / MANAGE_EXTERNAL_STORAGE:</strong> Necesario exclusivamente para indexar, buscar y reproducir sus archivos de audio master de alta resolución (ALAC, AIFF, FLAC, WAV, MP3, OGG, OPUS) almacenados en su dispositivo. LYRA no modifica ni elimina sus archivos.</li>
+                <li><strong>Modo Host USB / Acceso a Hardware USB:</strong> Necesario para eludir la Capa de Abstracción de Hardware (HAL) de Android y obtener acceso directo a su Convertidor Digital-Analógico (DAC) externo. Imprescindible para lograr la reproducción nativa Bit-Perfect real.</li>
+                <li><strong>VIBRATE / HAPTIC FEEDBACK:</strong> Usado exclusivamente para impulsar la simulación física al interactuar con los knobs y controles de estilo analógico de la aplicación.</li>
+                <li><strong>RECORD_AUDIO:</strong> Requerido por la API Android Visualizer para capturar la forma de onda de salida de audio en tiempo real para el VU Meter y el Goniómetro. No se graba ni almacena ningún audio.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="policy-section">
+        <h2>
+            <span class="section-num">3</span>
+            <span lang="en">Data Collection and Third-Party Services</span>
+            <span lang="es">Recopilación de Datos y Servicios de Terceros</span>
+        </h2>
+        <div lang="en">
+            <ul>
+                <li><strong>Zero Data Collection:</strong> LYRA does not collect personal identifiers, location data, IP addresses, device metrics, or audio telemetry.</li>
+                <li><strong>Local Processing:</strong> Your audio processing, volume calculations, vector goniometer calculations, and VU meter ballistics are computed entirely locally and in real-time on your device's CPU.</li>
+                <li><strong>Google Play Billing:</strong> For the 21-day trial verification and the lifetime license purchase, the Application utilizes the official Google Play In-App Billing API. All financial transactions, credit card data, and licensing checks are securely handled directly by Google LLC. LYRA never sees or stores your payment information.</li>
+            </ul>
+        </div>
+        <div lang="es">
+            <ul>
+                <li><strong>Cero Recopilación de Datos:</strong> LYRA no recopila identificadores personales, datos de ubicación, direcciones IP, métricas del dispositivo ni telemetría de audio.</li>
+                <li><strong>Procesamiento Local:</strong> El procesamiento de audio, los cálculos de volumen, los cálculos del goniómetro vectorial y la balística del VU Meter se computan íntegramente de forma local y en tiempo real en la CPU de su dispositivo.</li>
+                <li><strong>Google Play Billing:</strong> Para la verificación del período de prueba de 21 días y la compra de la licencia vitalicia, la Aplicación utiliza la API oficial de facturación in-app de Google Play. Todas las transacciones financieras, datos de tarjetas y verificaciones de licencia son gestionados de forma segura directamente por Google LLC. LYRA nunca ve ni almacena su información de pago.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="policy-section">
+        <h2>
+            <span class="section-num">4</span>
+            <span lang="en">Security of the Trial Engine</span>
+            <span lang="es">Seguridad del Motor de Trial</span>
+        </h2>
+        <div lang="en">
+            <p>To enforce the 21-day trial period fairly, the Application securely registers an encrypted timestamp locally using Android's <strong>EncryptedSharedPreferences (AES256-GCM)</strong>. This mechanism is used solely to verify the evaluation period and detect unauthorized system clock tampering.</p>
+            <p>No tracking cookies or network-level user profiling are involved. The encrypted data never leaves your device.</p>
+        </div>
+        <div lang="es">
+            <p>Para aplicar el período de prueba de 21 días de forma justa, la Aplicación registra de forma segura un timestamp cifrado localmente utilizando <strong>EncryptedSharedPreferences (AES256-GCM)</strong> de Android. Este mecanismo se usa únicamente para verificar el período de evaluación y detectar manipulaciones no autorizadas del reloj del sistema.</p>
+            <p>No se utilizan cookies de rastreo ni perfiles de usuario a nivel de red. Los datos cifrados nunca abandonan su dispositivo.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 5 -->
+    <div class="policy-section">
+        <h2>
+            <span class="section-num">5</span>
+            <span lang="en">Contact for Support</span>
+            <span lang="es">Contacto y Soporte</span>
+        </h2>
+        <div lang="en">
+            <p>For technical inquiries, bug reports, or hardware certification questions regarding external DACs, please contact us through the official support channel:</p>
+            <div class="contact-box">
+                <p>📧 <strong>Email:</strong> <a href="mailto:support@lyrabitperfect.com">support@lyrabitperfect.com</a></p>
+                <p style="margin-top:0.5rem">🌐 <strong>Website:</strong> <a href="https://lyrabitperfect.com">lyrabitperfect.com</a></p>
+            </div>
+        </div>
+        <div lang="es">
+            <p>Para consultas técnicas, informes de errores o preguntas sobre la certificación de hardware de DACs externos, puede contactarnos a través del canal de soporte oficial:</p>
+            <div class="contact-box">
+                <p>📧 <strong>Email:</strong> <a href="mailto:support@lyrabitperfect.com">support@lyrabitperfect.com</a></p>
+                <p style="margin-top:0.5rem">🌐 <strong>Web:</strong> <a href="https://lyrabitperfect.com">lyrabitperfect.com</a></p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p lang="en">© 2026 Lyra Bitperfect. Developed with Flutter and Kotlin for Android.</p>
+    <p lang="es">© 2026 Lyra Bitperfect. Desarrollado con Flutter y Kotlin para Android.</p>
+    <img src="Logo_512.png" alt="Lyra Bitperfect">
+</footer>
+
+<script>
+    function setLang(lang) {
+        const body = document.body;
+        const btnEn = document.getElementById('btn-en');
+        const btnEs = document.getElementById('btn-es');
+        btnEn.classList.remove('active');
+        btnEs.classList.remove('active');
+        if (lang === 'es') {
+            body.className = 'lang-es';
+            btnEs.classList.add('active');
+        } else {
+            body.className = 'lang-en';
+            btnEn.classList.add('active');
+        }
+    }
+</script>
+
+</body>
+</html>
