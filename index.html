@@ -219,6 +219,22 @@
             border-radius: 50%;
         }
 
+        .footer-links {
+            margin-top: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
         /* Control de visualización: Ahora arranca en INGLÉS por defecto */
         [lang="es"] { display: none; }
         body.lang-es [lang="en"] { display: none; }
@@ -227,7 +243,8 @@
         body.lang-es grid[lang="es"] { display: grid; }
     </style>
 </head>
-<body class="lang-en"> <header>
+<body class="lang-en"> 
+    <header>
         <div class="lang-switcher">
             <button class="lang-btn active" id="btn-en" onclick="setLang('en')">ENG</button>
             <button class="lang-btn" id="btn-es" onclick="setLang('es')">ESP</button>
@@ -247,7 +264,7 @@
         <section class="section">
             <div lang="es">
                 <h2>El Concepto: Un Objeto Físico de Alta Gama</h2>
-                <p>Lyra Bitperfect no es simplemente un reproductor de música; es una declaración de principios sobre cómo debería sonar y sentirse el audio en un dispositivo móvil. Diseñada bajo la influencia estética de los equipos analógicos clásicos de los años 70 y 80 (como McIntosh o Marantz), combina texturas realistas y potenciómetros físicos de alta precisión con una arquitectura de audio avanzada que elimina el procesado innecesario.</p>
+                <p>Lyra Bitperfect no es simplemente un reproductor de música; es una declaración de principios sobre cómo debería sonar y sentirse el audio en un dispositivo móvil. Diseñada bajo la influencia estética de los equipos analógicos clásicos de los años 70 y 80 (como McIntosh o Marantz), combina textures realistas y potenciómetros físicos de alta precisión con una arquitectura de audio avanzada que elimina el procesado innecesario.</p>
             </div>
             <div lang="en">
                 <h2>The Concept: A High-End Physical Object</h2>
@@ -351,6 +368,11 @@
         
         <p lang="es">"Una interfaz que no parece una app, sino un objeto físico de 5.000€"</p>
         <p lang="en">"An interface that doesn't look like an app, but a €5,000 physical object"</p>
+        
+        <div class="footer-links">
+            <span lang="es"><a href="privacy.html" target="_blank">Política de Privacidad</a></span>
+            <span lang="en"><a href="privacy.html" target="_blank">Privacy Policy</a></span>
+        </div>
         
         <img src="Logo 512.png" alt="Sello de Calidad Lyra Gold" class="footer-logo">
     </footer>
