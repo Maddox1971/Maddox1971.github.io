@@ -199,7 +199,7 @@
             color: var(--accent-gold);
         }
 
-        /* ESTILOS NUEVOS PARA LA SECCIÓN DE DOCUMENTACIÓN */
+        /* ESTILOS DE LA SECCIÓN DE DOCUMENTACIÓN */
         .main-download-box {
             border: 1px solid var(--accent-gold);
             background: var(--card-bg);
@@ -293,14 +293,14 @@
             text-decoration: underline;
         }
 
-        /* LÓGICA DE CONTROL ESTABLE PARA CHROME */
+        /* LÓGICA DE CONTROL ESTABLE */
         .text-es { display: none; }
         .text-en { display: inline; }
         div.text-en, section.text-en, tr.text-en, p.text-en, h2.text-en, h3.text-en, h4.text-en, strong.text-en, span.text-en { display: block; }
 
-        body.lang-es .text-en { display: none; }
-        body.lang-es .text-es { display: inline; }
-        body.lang-es div.text-es, body.lang-es section.text-es, body.lang-es tr.text-es, body.lang-es p.text-es, body.lang-es h2.text-es, body.lang-es h3.text-es, body.lang-es h4.text-es, body.lang-es strong.text-es, body.lang-es span.text-es { display: block; }
+        body.lang-es .text-en { display: none !important; }
+        body.lang-es .text-es { display: inline !important; }
+        body.lang-es div.text-es, body.lang-es section.text-es, body.lang-es tr.text-es, body.lang-es p.text-es, body.lang-es h2.text-es, body.lang-es h3.text-es, body.lang-es h4.text-es, body.lang-es strong.text-es, body.lang-es span.text-es { display: block !important; }
     </style>
 </head>
 <body class="lang-en"> 
@@ -428,12 +428,14 @@
             <p class="text-en">Download official LYRA Bitperfect manuals optimized for digital consultation.</p>
 
             <div class="main-download-box">
-                <h3 class="text-es">📦 Paquete Completo de Documentación (EN/ES)</h3>
-                <h3 class="text-en">📦 Complete Documentation Pack (EN/ES)</h3>
-                
-                <p class="text-es">Consigue ambos documentos optimizados en PDF dentro de un único archivo comprimido (.zip). Contiene la Guía de Uso práctica y el Informe Técnico por separado.</p>
-                <p class="text-en">Get both optimized PDFs in a single compressed file. Includes the practical User Guide and Technical Report.</p>
-                
+                <div class="text-es">
+                    <h3>📦 Paquete Completo de Documentación (EN/ES)</h3>
+                    <p>Consigue ambos documentos optimizados en PDF dentro de un único archivo comprimido (.zip). Contiene la Guía de Uso práctica y el Informe Técnico por separado.</p>
+                </div>
+                <div class="text-en">
+                    <h3>📦 Complete Documentation Pack (EN/ES)</h3>
+                    <p>Get both optimized PDFs in a single compressed file. Includes the practical User Guide and Technical Report.</p>
+                </div>
                 <a href="Lyra_Bitperfect_Documentation_Pack.zip" class="btn" download>Download Pack (.ZIP)</a>
             </div>
 
@@ -442,21 +444,29 @@
             
             <div class="individual-downloads">
                 <div class="card-doc">
-                    <h4 class="text-es">📘 Guía de Uso</h4>
-                    <h4 class="text-en">📘 User Guide</h4>
-                    <p class="text-es">Manual práctico de inicio rápido, controles analógicos de la interfaz, perfiles del ecualizador y estados del LED.</p>
-                    <p class="text-en">Practical quick-start manual, interface analog controls, equalizer profiles, and LED system status.</p>
-                    <a href="Lyra_Bitperfect_User_Guide.pdf" target="_blank" class="text-es">Leer PDF →</a>
-                    <a href="Lyra_Bitperfect_User_Guide.pdf" target="_blank" class="text-en">Read PDF →</a>
+                    <div class="text-es">
+                        <h4>📘 Guía de Uso</h4>
+                        <p>Manual práctico de inicio rápido, controles analógicos de la interfaz, perfiles del ecualizador y estados del LED.</p>
+                        <a href="Lyra_Bitperfect_User_Guide.pdf" target="_blank">Leer PDF →</a>
+                    </div>
+                    <div class="text-en">
+                        <h4>📘 User Guide</h4>
+                        <p>Practical quick-start manual, interface analog controls, equalizer profiles, and LED system status.</p>
+                        <a href="Lyra_Bitperfect_User_Guide.pdf" target="_blank">Read PDF →</a>
+                    </div>
                 </div>
 
                 <div class="card-doc">
-                    <h4 class="text-es">📙 Informe Técnico</h4>
-                    <h4 class="text-en">📙 Technical Report</h4>
-                    <p class="text-es">Documentación de arquitectura profunda, canales nativos en Kotlin, gestión de hardware y bypass del kernel de Android.</p>
-                    <p class="text-en">Deep architecture documentation, native Kotlin channels, hardware management, and Android kernel bypass.</p>
-                    <a href="Lyra_Bitperfect_Technical_Report.pdf" target="_blank" class="text-es">Leer PDF →</a>
-                    <a href="Lyra_Bitperfect_Technical_Report.pdf" target="_blank" class="text-en">Read PDF →</a>
+                    <div class="text-es">
+                        <h4>📙 Informe Técnico</h4>
+                        <p>Documentación de arquitectura profunda, canales nativos en Kotlin, gestión de hardware y bypass del kernel de Android.</p>
+                        <a href="Lyra_Bitperfect_Technical_Report.pdf" target="_blank">Leer PDF →</a>
+                    </div>
+                    <div class="text-en">
+                        <h4>📙 Technical Report</h4>
+                        <p>Deep architecture documentation, native Kotlin channels, hardware management, and Android kernel bypass.</p>
+                        <a href="Lyra_Bitperfect_Technical_Report.pdf" target="_blank">Read PDF →</a>
+                    </div>
                 </div>
             </div>
         </section>
