@@ -426,6 +426,11 @@
                 btnEn.classList.add('active');
             }
         }
+
+        // Esta función fuerza la activación del idioma inglés por defecto nada más cargarse el DOM
+        document.addEventListener("DOMContentLoaded", function() {
+            setLang('en');
+        });
     </script>
 
 </body>
