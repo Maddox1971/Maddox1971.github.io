@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="notranslate">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
     <title>Lyra Bitperfect | Privacy Policy</title>
     <style>
         :root {
@@ -235,12 +236,12 @@
         }
 
         /* Language control */
-        [lang="es"] { display: none; }
-        body.lang-es [lang="en"] { display: none; }
-        body.lang-es [lang="es"] { display: block; }
-        body.lang-es span[lang="es"] { display: inline; }
-        span[lang="en"] { display: inline; }
-        body.lang-es span[lang="en"] { display: none; }
+        .text-es { display: none; }
+        body.lang-es .text-en { display: none; }
+        body.lang-es .text-es { display: block; }
+        body.lang-es span.text-es { display: inline; }
+        span.text-en { display: inline; }
+        body.lang-es span.text-en { display: none; }
     </style>
 </head>
 <body class="lang-en">
@@ -254,49 +255,47 @@
     <img src="Logo_512.png" alt="Lyra Bitperfect" class="header-logo">
 
     <h1>
-        <span lang="en">PRIVACY POLICY</span>
-        <span lang="es">POLÍTICA DE PRIVACIDAD</span>
+        <span class="text-en">PRIVACY POLICY</span>
+        <span class="text-es">POLÍTICA DE PRIVACIDAD</span>
     </h1>
     <p>LYRA BITPERFECT</p>
 
     <a href="index.html" class="back-link">
-        <span lang="en">← Back to main site</span>
-        <span lang="es">← Volver al sitio principal</span>
+        <span class="text-en">← Back to main site</span>
+        <span class="text-es">← Volver al sitio principal</span>
     </a>
 </header>
 
 <div class="container">
 
     <p class="last-updated">
-        <span lang="en">Last Updated: May 2026</span>
-        <span lang="es">Última actualización: Mayo 2026</span>
+        <span class="text-en">Last Updated: May 2026</span>
+        <span class="text-es">Última actualización: Mayo 2026</span>
     </p>
 
-    <!-- SECTION 1 -->
     <div class="policy-section">
         <h2>
             <span class="section-num">1</span>
-            <span lang="en">Overview</span>
-            <span lang="es">Descripción General</span>
+            <span class="text-en">Overview</span>
+            <span class="text-es">Descripción General</span>
         </h2>
-        <div lang="en">
+        <div class="text-en">
             <p>This Privacy Policy governs the privacy practices of <strong>LYRA: Lossless Yield Reference Audio</strong> (the "Application"). We are committed to protecting user privacy and ensuring a secure, transparent environment.</p>
             <p>LYRA is a premium digital audio transport engine designed for high-fidelity audio playback. <strong>We do not collect, store, track, or share any personal data, audio files, or user behavior.</strong> <span class="zero-badge">ZERO DATA</span></p>
         </div>
-        <div lang="es">
+        <div class="text-es">
             <p>Esta Política de Privacidad rige las prácticas de privacidad de <strong>LYRA: Lossless Yield Reference Audio</strong> (la "Aplicación"). Estamos comprometidos con la protección de la privacidad del usuario y con garantizar un entorno seguro y transparente.</p>
             <p>LYRA es un motor de transporte de audio digital premium diseñado para la reproducción de audio de alta fidelidad. <strong>No recopilamos, almacenamos, rastreamos ni compartimos ningún dato personal, archivo de audio ni comportamiento del usuario.</strong> <span class="zero-badge">CERO DATOS</span></p>
         </div>
     </div>
 
-    <!-- SECTION 2 -->
     <div class="policy-section">
         <h2>
             <span class="section-num">2</span>
-            <span lang="en">Permissions Requested and Justification</span>
-            <span lang="es">Permisos Solicitados y Justificación</span>
+            <span class="text-en">Permissions Requested and Justification</span>
+            <span class="text-es">Permisos Solicitados y Justificación</span>
         </h2>
-        <div lang="en">
+        <div class="text-en">
             <p>To deliver high-resolution bit-perfect audio bypassing the default Android audio stack, the Application requires specific hardware-level permissions. These permissions are used strictly in real-time and are never transmitted over the network:</p>
             <ul>
                 <li><strong>READ_EXTERNAL_STORAGE / MANAGE_EXTERNAL_STORAGE:</strong> Required exclusively to index, look up, and play your local high-resolution master audio files (ALAC, AIFF, FLAC, WAV, MP3, OGG, OPUS) stored on your device. LYRA does not modify or delete your files.</li>
@@ -305,7 +304,7 @@
                 <li><strong>RECORD_AUDIO:</strong> Required by the Android Visualizer API to capture the audio output waveform in real-time for the VU Meter and Goniometer measurement instruments. No audio is ever recorded or stored.</li>
             </ul>
         </div>
-        <div lang="es">
+        <div class="text-es">
             <p>Para ofrecer audio bit-perfect de alta resolución evitando la pila de audio predeterminada de Android, la Aplicación requiere permisos específicos a nivel de hardware. Estos permisos se utilizan estrictamente en tiempo real y nunca se transmiten a través de la red:</p>
             <ul>
                 <li><strong>READ_EXTERNAL_STORAGE / MANAGE_EXTERNAL_STORAGE:</strong> Necesario exclusivamente para indexar, buscar y reproducir sus archivos de audio master de alta resolución (ALAC, AIFF, FLAC, WAV, MP3, OGG, OPUS) almacenados en su dispositivo. LYRA no modifica ni elimina sus archivos.</li>
@@ -316,21 +315,20 @@
         </div>
     </div>
 
-    <!-- SECTION 3 -->
     <div class="policy-section">
         <h2>
             <span class="section-num">3</span>
-            <span lang="en">Data Collection and Third-Party Services</span>
-            <span lang="es">Recopilación de Datos y Servicios de Terceros</span>
+            <span class="text-en">Data Collection and Third-Party Services</span>
+            <span class="text-es">Recopilación de Datos y Servicios de Terceros</span>
         </h2>
-        <div lang="en">
+        <div class="text-en">
             <ul>
                 <li><strong>Zero Data Collection:</strong> LYRA does not collect personal identifiers, location data, IP addresses, device metrics, or audio telemetry.</li>
                 <li><strong>Local Processing:</strong> Your audio processing, volume calculations, vector goniometer calculations, and VU meter ballistics are computed entirely locally and in real-time on your device's CPU.</li>
                 <li><strong>Google Play Billing:</strong> For the 21-day trial verification and the lifetime license purchase, the Application utilizes the official Google Play In-App Billing API. All financial transactions, credit card data, and licensing checks are securely handled directly by Google LLC. LYRA never sees or stores your payment information.</li>
             </ul>
         </div>
-        <div lang="es">
+        <div class="text-es">
             <ul>
                 <li><strong>Cero Recopilación de Datos:</strong> LYRA no recopila identificadores personales, datos de ubicación, direcciones IP, métricas del dispositivo ni telemetría de audio.</li>
                 <li><strong>Procesamiento Local:</strong> El procesamiento de audio, los cálculos de volumen, los cálculos del goniómetro vectorial y la balística del VU Meter se computan íntegramente de forma local y en tiempo real en la CPU de su dispositivo.</li>
@@ -339,38 +337,36 @@
         </div>
     </div>
 
-    <!-- SECTION 4 -->
     <div class="policy-section">
         <h2>
             <span class="section-num">4</span>
-            <span lang="en">Security of the Trial Engine</span>
-            <span lang="es">Seguridad del Motor de Trial</span>
+            <span class="text-en">Security of the Trial Engine</span>
+            <span class="text-es">Seguridad del Motor de Trial</span>
         </h2>
-        <div lang="en">
+        <div class="text-en">
             <p>To enforce the 21-day trial period fairly, the Application securely registers an encrypted timestamp locally using Android's <strong>EncryptedSharedPreferences (AES256-GCM)</strong>. This mechanism is used solely to verify the evaluation period and detect unauthorized system clock tampering.</p>
             <p>No tracking cookies or network-level user profiling are involved. The encrypted data never leaves your device.</p>
         </div>
-        <div lang="es">
+        <div class="text-es">
             <p>Para aplicar el período de prueba de 21 días de forma justa, la Aplicación registra de forma segura un timestamp cifrado localmente utilizando <strong>EncryptedSharedPreferences (AES256-GCM)</strong> de Android. Este mecanismo se usa únicamente para verificar el período de evaluación y detectar manipulaciones no autorizadas del reloj del sistema.</p>
             <p>No se utilizan cookies de rastreo ni perfiles de usuario a nivel de red. Los datos cifrados nunca abandonan su dispositivo.</p>
         </div>
     </div>
 
-    <!-- SECTION 5 -->
     <div class="policy-section">
         <h2>
             <span class="section-num">5</span>
-            <span lang="en">Contact for Support</span>
-            <span lang="es">Contacto y Soporte</span>
+            <span class="text-en">Contact for Support</span>
+            <span class="text-es">Contacto y Soporte</span>
         </h2>
-        <div lang="en">
+        <div class="text-en">
             <p>For technical inquiries, bug reports, or hardware certification questions regarding external DACs, please contact us through the official support channel:</p>
             <div class="contact-box">
                 <p>📧 <strong>Email:</strong> <a href="mailto:support@lyrabitperfect.com">support@lyrabitperfect.com</a></p>
                 <p style="margin-top:0.5rem">🌐 <strong>Website:</strong> <a href="https://lyrabitperfect.com">lyrabitperfect.com</a></p>
             </div>
         </div>
-        <div lang="es">
+        <div class="text-es">
             <p>Para consultas técnicas, informes de errores o preguntas sobre la certificación de hardware de DACs externos, puede contactarnos a través del canal de soporte oficial:</p>
             <div class="contact-box">
                 <p>📧 <strong>Email:</strong> <a href="mailto:support@lyrabitperfect.com">support@lyrabitperfect.com</a></p>
@@ -382,8 +378,8 @@
 </div>
 
 <footer>
-    <p lang="en">© 2026 Lyra Bitperfect. Developed with Flutter and Kotlin for Android.</p>
-    <p lang="es">© 2026 Lyra Bitperfect. Desarrollado con Flutter y Kotlin para Android.</p>
+    <p class="text-en">© 2026 Lyra Bitperfect. Developed with Flutter and Kotlin for Android.</p>
+    <p class="text-es">© 2026 Lyra Bitperfect. Desarrollado con Flutter y Kotlin para Android.</p>
     <img src="Logo_512.png" alt="Lyra Bitperfect">
 </footer>
 
