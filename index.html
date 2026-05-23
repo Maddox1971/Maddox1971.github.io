@@ -1,156 +1,174 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en" class="notranslate">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lyra Bit-Perfect Audio – Conexión Directa</title>
+    <meta name="google" content="notranslate">
+    <title>Lyra Bitperfect | High-Fidelity Audio Player for Android</title>
     <style>
-        /* --- ESTILOS GENERALES Y BASE DEL PROYECTO --- */
         :root {
-            --color-oro: #d4af37;
+            --bg-color: #0d0f12;
+            --card-bg: #161a22;
+            --accent-gold: #d4af37;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
             --color-bronce: #aa7c11;
-            --color-fondo: #121212;
-            --color-superficie: #1e1e1e;
-            --color-texto: #e0e0e0;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--color-fondo);
-            color: var(--color-texto);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
         }
 
-        /* Barra superior de idiomas */
-        .barra-idiomas {
-            background-color: #000;
-            text-align: right;
-            padding: 10px 20px;
-            font-size: 0.9rem;
-            border-bottom: 1px solid #222;
+        /* Selector de Idioma */
+        .lang-switcher {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
         }
 
-        .barra-idiomas a {
-            color: #888;
-            text-decoration: none;
-            margin-left: 15px;
-            transition: color 0.3s;
+        .lang-btn {
+            background: #1e293b;
+            color: var(--text-muted);
+            border: 1px solid #334155;
+            padding: 0.35rem 0.75rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: all 0.2s;
         }
 
-        .barra-idiomas a:hover, .barra-idiomas a.activo {
-            color: var(--color-oro);
+        .lang-btn:hover {
+            color: var(--text-main);
+            border-color: #475569;
         }
+
+        .lang-btn.active {
+            background: var(--accent-gold);
+            color: #000;
+            border-color: var(--accent-gold);
+        }
+
+        /* Lógica de traducción por CSS */
+        .lang-en .text-es { display: none !important; }
+        .lang-es .text-en { display: none !important; }
 
         header {
-            background: linear-gradient(180deg, #000, #1a1a1a);
-            padding: 40px 20px;
+            background: linear-gradient(180deg, #000000, #11141a);
+            padding: 3rem 1rem;
             text-align: center;
             border-bottom: 2px solid var(--color-bronce);
         }
 
-        h1 {
-            color: var(--color-oro);
-            margin: 0;
-            font-size: 2.5rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        .header-logo {
+            max-width: 140px;
+            height: auto;
+            margin-bottom: 1rem;
         }
 
         .subtitulo {
             font-style: italic;
-            color: #888;
-            margin-top: 10px;
+            color: var(--text-muted);
+            margin: 0;
+            font-size: 1.1rem;
         }
 
         .contenedor-principal {
             max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
         }
 
-        /* --- SECCIÓN DE DESCARGAS --- */
+        /* SECCIÓN DE DESCARGAS */
         .seccion-descargas {
-            background-color: var(--color-superficie);
-            border: 1px solid #333;
-            border-radius: 8px;
-            padding: 25px;
-            margin-bottom: 40px;
+            background-color: var(--card-bg);
+            border: 1px solid #242b35;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
             text-align: center;
         }
 
         .seccion-descargas h2 {
-            color: var(--color-oro);
+            color: var(--accent-gold);
             margin-top: 0;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .grid-descargas {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
+            gap: 1.25rem;
+            margin-top: 1.5rem;
         }
 
         .boton-descarga {
-            background: linear-gradient(135deg, var(--color-bronce) 0%, #664600 100%);
+            background: linear-gradient(135deg, var(--color-bronce) 0%, #523c08 100%);
             color: #fff;
-            padding: 12px 24px;
+            padding: 0.8rem 1.5rem;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 6px;
             font-weight: bold;
             transition: transform 0.2s, box-shadow 0.2s;
             display: flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.4);
         }
 
         .boton-descarga:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.5);
-            background: linear-gradient(135deg, var(--color-oro) 0%, var(--color-bronce) 100%);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.6);
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--color-bronce) 100%);
         }
 
-        /* --- GRID DE CARACTERÍSTICAS --- */
+        /* GRID DE CARACTERÍSTICAS */
         .grid-caracteristicas {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 60px;
+            gap: 1.5rem;
+            margin-bottom: 4rem;
         }
 
         .tarjeta {
-            background-color: var(--color-superficie);
-            border: 1px solid #333;
-            border-radius: 8px;
-            padding: 20px;
+            background-color: var(--card-bg);
+            border: 1px solid #242b35;
+            border-radius: 12px;
+            padding: 1.5rem;
             text-align: center;
         }
 
         .tarjeta h3 {
-            color: var(--color-oro);
-            margin-top: 0;
+            color: var(--accent-gold);
+            margin-top: 0.5rem;
         }
 
-        /* --- SECCIÓN PURISTA: SEÑAL DIRECTA (CORVETTE 58) --- */
+        /* SECCIÓN PURISTA: SEÑAL DIRECTA (CORVETTE 58) */
         .seccion-purista {
-            background: radial-gradient(circle, #222 0%, #111 100%);
+            background: radial-gradient(circle, #1a202c 0%, #0d0f12 100%);
             border: 2px solid var(--color-bronce);
-            border-radius: 12px;
-            padding: 40px;
-            margin-top: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.8);
         }
 
         .contenedor-purista {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 30px;
+            gap: 2.5rem;
         }
 
         @media (min-width: 768px) {
@@ -165,7 +183,7 @@
         }
 
         .bloque-texto-purista h2 {
-            color: var(--color-oro);
+            color: var(--accent-gold);
             font-size: 2rem;
             margin-top: 0;
             text-transform: uppercase;
@@ -174,27 +192,27 @@
         }
 
         .bloque-texto-purista p {
-            font-size: 1.1rem;
-            color: #ccc;
+            font-size: 1.05rem;
+            color: var(--text-main);
         }
 
         .analogia-corvette {
-            background-color: rgba(0, 0, 0, 0.4);
-            border-left: 4px solid var(--color-oro);
-            padding: 15px;
-            margin: 20px 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-left: 4px solid var(--accent-gold);
+            padding: 1.25rem;
+            margin: 1.5rem 0;
             font-style: italic;
         }
 
-        /* --- CONTENEDOR DE IMÁGENES INTERACTIVO (EFECTO PLACA EN BLUR) --- */
+        /* CONTENEDOR DE IMÁGENES INTERACTIVO (EFECTO PLACA EN BLUR) */
         .bloque-interactivo-imagenes {
             flex: 1;
             position: relative;
             width: 100%;
-            max-width: 400px;
+            max-width: 360px;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
             aspect-ratio: 1 / 2.1;
         }
 
@@ -238,66 +256,91 @@
         .pie-interaccion {
             text-align: center;
             font-size: 0.85rem;
-            color: #777;
-            margin-top: 10px;
+            color: var(--text-muted);
+            margin-top: 12px;
         }
 
         footer {
             text-align: center;
-            padding: 40px;
-            color: #555;
+            padding: 3rem 1rem;
+            color: var(--text-muted);
             font-size: 0.9rem;
-            border-top: 1px solid #222;
-            margin-top: 60px;
+            border-top: 1px solid #1e242e;
+            margin-top: 4rem;
+        }
+
+        .footer-logo {
+            max-width: 60px;
+            margin-top: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .footer-links a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
-<body>
-
-    <div class="barra-idiomas">
-        <a href="#" class="activo">ESPAÑOL</a>
-        <a href="#">ENGLISH</a>
-        <a href="#">DEUTSCH</a>
+<body class="lang-en"> <div class="lang-switcher">
+        <button id="btn-en" class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button id="btn-es" class="lang-btn" onclick="setLang('es')">ES</button>
     </div>
 
     <header>
-        <h1>Lyra Audio</h1>
-        <div class="subtitulo">Mecánica pura. Conexión directa. Sonido honesto.</div>
+        <img src="Logo 512.png" alt="Lyra Audio Logo" class="header-logo">
+        <div class="subtitulo text-es">Mecánica pura. Conexión directa. Sonido honesto.</div>
+        <div class="subtitulo text-en">Pure mechanics. Direct connection. Honest sound.</div>
     </header>
 
     <div class="contenedor-principal">
         
         <div class="seccion-descargas">
-            <h2>Documentación Técnica y Repositorio</h2>
-            <p>Descarga los manuales actualizados con la nueva arquitectura Bit-Perfect y el código fuente nativo.</p>
+            <h2 class="text-es">Documentación Técnica y Repositorio</h2>
+            <h2 class="text-en">Technical Documentation & Repository</h2>
+            
+            <p class="text-es">Descarga los manuales actualizados con la nueva arquitectura Bit-Perfect y el código fuente nativo.</p>
+            <p class="text-en">Download the updated manuals featuring the new Bit-Perfect architecture and native source code.</p>
+            
             <div class="grid-descargas">
                 <a href="Lyra_Bitperfect_User_Guide.pdf" class="boton-descarga" download>
-                    📄 Guía de Usuario (PDF)
+                    <span class="text-es">📄 Guía de Usuario (PDF)</span>
+                    <span class="text-en">📄 User Guide (PDF)</span>
                 </a>
                 <a href="Lyra_Bitperfect_Technical_Report.pdf" class="boton-descarga" download>
-                    ⚙️ Informe Técnico (PDF)
+                    <span class="text-es">⚙️ Informe Técnico (PDF)</span>
+                    <span class="text-en">⚙️ Technical Report (PDF)</span>
                 </a>
                 <a href="lyra_source_code.zip" class="boton-descarga" download>
-                    📦 Código Fuente (.ZIP)
+                    <span class="text-es">📦 Código Fuente (.ZIP)</span>
+                    <span class="text-en">📦 Source Code (.ZIP)</span>
                 </a>
             </div>
         </div>
         
         <div class="grid-caracteristicas">
             <div class="tarjeta">
-                <img src="dac.jpg" alt="Soporte DAC" style="max-width: 60px; margin-bottom: 10px;">
-                <h3>Soporte Bit-Perfect DAC</h3>
-                <p>Comunicación directa con hardware de audio externo saltándose las limitaciones del mezclador de Android.</p>
+                <img src="dac.jpg" alt="DAC Support" style="max-width: 60px; margin-bottom: 10px;">
+                <h3 class="text-es">Soporte Bit-Perfect DAC</h3>
+                <h3 class="text-en">Bit-Perfect DAC Support</h3>
+                <p class="text-es">Comunicación directa con hardware de audio externo saltándose las limitaciones del mezclador de Android.</p>
+                <p class="text-en">Direct communication with external audio hardware, bypassing the native Android mixer limitations.</p>
             </div>
             <div class="tarjeta">
-                <img src="vu%20meter.jpg" alt="Vúmetros clásicos" style="max-width: 60px; margin-bottom: 10px;">
-                <h3>Monitorización Analógica</h3>
-                <p>Instrumentación balística real que lee directamente la potencia nativa del flujo binario PCM.</p>
+                <img src="vu%20meter.jpg" alt="VU Meters" style="max-width: 60px; margin-bottom: 10px;">
+                <h3 class="text-es">Monitorización Analógica</h3>
+                <h3 class="text-en">Analog Monitoring</h3>
+                <p class="text-es">Instrumentación balística real que lee directamente la potencia nativa del flujo binario PCM.</p>
+                <p class="text-en">Real ballistic instrumentation reading directly from the raw PCM binary stream power.</p>
             </div>
             <div class="tarjeta">
-                <img src="goniometro.jpg" alt="Goniómetro" style="max-width: 60px; margin-bottom: 10px;">
-                <h3>Análisis de Fase</h3>
-                <p>Visualización en tiempo real de la dispersión estéreo y el comportamiento goniométrico de la señal.</p>
+                <img src="goniometro.jpg" alt="Goniometer" style="max-width: 60px; margin-bottom: 10px;">
+                <h3 class="text-es">Análisis de Fase</h3>
+                <h3 class="text-en">Phase Analysis</h3>
+                <p class="text-es">Visualización en tiempo real de la dispersión estéreo y el comportamiento goniométrico de la señal.</p>
+                <p class="text-en">Real-time visualization of stereo dispersion and goniometric signal phase behavior.</p>
             </div>
         </div>
 
@@ -305,46 +348,84 @@
             <div class="contenedor-purista">
                 
                 <div class="bloque-texto-purista">
-                    <h2>Sin Intermediarios: Señal Directa</h2>
-                    <p>En el software de audio moderno hay una obsesión por corregir, filtrar y procesar la señal. En Lyra creemos en lo contrario.</p>
+                    <h2 class="text-es">Sin Intermediarios: Señal Directa</h2>
+                    <h2 class="text-en">No Intermediaries: Direct Signal</h2>
+                    
+                    <p class="text-es">En el software de audio moderno hay una obsesión por corregir, filtrar y procesar la señal. En Lyra creemos en lo contrario.</p>
+                    <p class="text-en">Modern audio software is obsessed with correcting, filtering, and over-processing the signal. At Lyra, we believe in the opposite.</p>
                     
                     <div class="analogia-corvette">
-                        "Lyra no es un superdeportivo moderno lleno de ayudas electrónicas. Es más parecido a un Corvette del 58. Un motor atmosférico, una conexión directa, metal, carretera y pura respuesta mecánica."
+                        <span class="text-es">"Lyra no es un superdeportivo moderno lleno de ayudas electrónicas. Es más parecido a un Corvette del 58. Un motor atmosférico, una conexión directa, metal, carretera y pura respuesta mecánica."</span>
+                        <span class="text-en">"Lyra is not a modern supercar packed with electronic driving aids. It is closer to a '58 Corvette. A naturally aspirated engine, a direct linkage, metal, asphalt, and raw mechanical response."</span>
                     </div>
 
-                    <p>Hemos quitado el ecualizador de raíz. No hay DSP tonal alterando las frecuencias, ni algoritmos artificiales intentando reinterpretar lo que el artista grabó en el estudio. El código pasa íntegramente por un <strong>núcleo nativo en Kotlin</strong> que se aparta del camino para que escuches la música de la forma más transparente y honesta posible.</p>
+                    <p class="text-es">Hemos quitado el ecualizador de raíz. No hay DSP tonal alterando las frecuencias, ni algoritmos artificiales intentando reinterpretar lo que el artista grabó en el estudio. El código pasa íntegramente por un <strong>núcleo nativo en Kotlin</strong> que se aparta del camino para que escuches la música de la forma más transparente y honesta posible.</p>
+                    <p class="text-en">We have completely removed the equalizer. There is no tonal DSP altering frequencies, nor artificial algorithms trying to re-interpret what the artist recorded in the studio. The playback stream flows entirely through a <strong>native Kotlin core</strong> that steps out of the way, delivering the most transparent and honest listening experience possible.</p>
                     
-                    <p>Dispones de controles mecánicos puros para balance espacial y conmutación Mono/Estéreo basados en lógica de atenuación lineal sin coloración.</p>
+                    <p class="text-es">Dispones de controles mecánicos puros para balance espacial y conmutación Mono/Estéreo basados en lógica de atenuación lineal sin coloración.</p>
+                    <p class="text-en">Pure mechanical controls are available for spatial balance and Mono/Stereo switching, built on linear attenuation logic with zero signal coloration.</p>
                 </div>
 
                 <div>
-                    <div class="bloque-interactivo-imagenes" title="Pasa el ratón para ver el Certificado de Señal Directa">
+                    <div class="bloque-interactivo-imagenes">
                         <img src="monitor.jpg" alt="Rack de Monitorización Lyra" class="imagen-rack">
                         
                         <div class="capa-detalle-overlay">
                             <img src="monitor_detalle.jpg" alt="Certificado Técnico Ampliado" class="imagen-detalle">
                         </div>
                     </div>
-                    <div class="pie-interaccion">Pasa el ratón (o toca) sobre el rack para inspeccionar el Certificado de Señal Directa</div>
+                    <div class="pie-interaccion text-es">Pasa el ratón (o toca) sobre el rack para inspeccionar el Certificado de Señal Directa</div>
+                    <div class="pie-interaccion text-en">Hover (or tap) over the rack to inspect the Direct Signal Certificate</div>
                 </div>
 
             </div>
         </div>
 
         <div style="margin-top: 60px; text-align: center;">
-            <h3 style="color: var(--color-oro); text-transform: uppercase;">Módulos Adicionales</h3>
+            <h3 class="text-es" style="color: var(--accent-gold); text-transform: uppercase;">Módulos Adicionales</h3>
+            <h3 class="text-en" style="color: var(--accent-gold); text-transform: uppercase;">Additional Modules</h3>
             <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px;">
-                <img src="libreria.jpg" alt="Librería de Audio" style="max-width: 200px; border: 1px solid #333; border-radius: 4px;">
-                <img src="led%20verde.jpg" alt="Estado Conectado" style="max-width: 200px; border: 1px solid #333; border-radius: 4px;">
-                <img src="led%20blanco.jpg" alt="Estado Vacío" style="max-width: 200px; border: 1px solid #333; border-radius: 4px;">
+                <img src="libreria.jpg" alt="Audio Library" style="max-width: 200px; border: 1px solid #242b35; border-radius: 4px;">
+                <img src="led%20verde.jpg" alt="Connected State" style="max-width: 200px; border: 1px solid #242b35; border-radius: 4px;">
+                <img src="led%20blanco.jpg" alt="Empty State" style="max-width: 200px; border: 1px solid #242b35; border-radius: 4px;">
             </div>
         </div>
 
     </div>
 
     <footer>
-        <p>&copy; 2026 Lyra Reference Audio Laboratories. Kotlin Native Core Architecture.</p>
+        <p class="text-es">© 2026 Lyra Bitperfect. Desarrollado con Flutter y Kotlin para Android.</p>
+        <p class="text-en">© 2026 Lyra Bitperfect. Developed with Flutter and Kotlin for Android.</p>
+        
+        <p class="text-es">"Una interfaz que no parece una app, sino un objeto físico de 5.000€"</p>
+        <p class="text-en">"An interface that doesn't look like an app, but a €5,000 physical object"</p>
+        
+        <div class="footer-links">
+            <span class="text-es"><a href="privacy.html" target="_blank">Política de Privacidad</a></span>
+            <span class="text-en"><a href="privacy.html" target="_blank">Privacy Policy</a></span>
+        </div>
+        
+        <img src="Logo 512.png" alt="Sello de Calidad Lyra Gold" class="footer-logo">
     </footer>
+
+    <script>
+        function setLang(lang) {
+            const body = document.body;
+            const btnEn = document.getElementById('btn-en');
+            const btnEs = document.getElementById('btn-es');
+            
+            btnEn.classList.remove('active');
+            btnEs.classList.remove('active');
+            
+            if (lang === 'es') {
+                body.className = 'lang-es';
+                btnEs.classList.add('active');
+            } else {
+                body.className = 'lang-en';
+                btnEn.classList.add('active');
+            }
+        }
+    </script>
 
 </body>
 </html>
