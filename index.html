@@ -24,14 +24,16 @@
             padding: 0;
         }
 
-        /* Selector de Idioma */
         .lang-switcher {
             position: absolute;
             top: 1rem;
             right: 1rem;
             display: flex;
+            flex-wrap: wrap;
             gap: 0.5rem;
             z-index: 10;
+            justify-content: flex-end;
+            max-width: calc(100% - 2rem);
         }
 
         .lang-btn {
@@ -44,6 +46,7 @@
             font-size: 0.875rem;
             font-weight: 600;
             transition: all 0.2s;
+            white-space: nowrap;
         }
 
         .lang-btn:hover {
@@ -57,13 +60,9 @@
             border-color: var(--accent-gold);
         }
 
-        /* Lógica de traducción por CSS */
-        .lang-en .text-es { display: none !important; }
-        .lang-es .text-en { display: none !important; }
-
         header {
             background: linear-gradient(180deg, #000000, #11141a);
-            padding: 3rem 1rem;
+            padding: 4.5rem 1rem 3rem;
             text-align: center;
             border-bottom: 2px solid var(--color-bronce);
         }
@@ -87,7 +86,6 @@
             padding: 0 1.5rem;
         }
 
-        /* SECCIÓN DE DESCARGAS */
         .seccion-descargas {
             background-color: var(--card-bg);
             border: 1px solid #242b35;
@@ -133,7 +131,6 @@
             background: linear-gradient(135deg, var(--accent-gold) 0%, var(--color-bronce) 100%);
         }
 
-        /* GRID DE CARACTERÍSTICAS */
         .grid-caracteristicas {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -154,7 +151,6 @@
             margin-top: 0.5rem;
         }
 
-        /* SECCIÓN PURISTA: SEÑAL DIRECTA */
         .seccion-purista {
             background: radial-gradient(circle, #1a202c 0%, #0d0f12 100%);
             border: 2px solid var(--color-bronce);
@@ -196,7 +192,7 @@
             color: var(--text-main);
         }
 
-        .analogia-corvette {
+        .claim-box {
             background-color: rgba(0, 0, 0, 0.5);
             border-left: 4px solid var(--accent-gold);
             padding: 1.25rem;
@@ -204,7 +200,6 @@
             font-style: italic;
         }
 
-        /* CONTENEDOR DE IMÁGENES INTERACTIVO */
         .bloque-interactivo-imagenes {
             flex: 1;
             position: relative;
@@ -279,45 +274,39 @@
             color: var(--accent-gold);
             text-decoration: none;
         }
+
         .footer-links a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
-<body class="lang-en">
+<body>
 
-    <div class="lang-switcher">
-        <button id="btn-en" class="lang-btn active" onclick="setLang('en')">EN</button>
-        <button id="btn-es" class="lang-btn" onclick="setLang('es')">ES</button>
+    <div class="lang-switcher" aria-label="Language selector">
+        <button id="btn-en" class="lang-btn active" onclick="setLang('en')">English</button>
+        <button id="btn-ja" class="lang-btn" onclick="setLang('ja')">日本語</button>
+        <button id="btn-de" class="lang-btn" onclick="setLang('de')">Deutsch</button>
+        <button id="btn-ko" class="lang-btn" onclick="setLang('ko')">한국어</button>
+        <button id="btn-es" class="lang-btn" onclick="setLang('es')">Español</button>
     </div>
 
     <header>
         <img src="Logo 512.png" alt="Lyra Audio Logo" class="header-logo">
-        <div class="subtitulo text-es">Mecánica pura. Conexión directa. Sonido honesto.</div>
-        <div class="subtitulo text-en">Pure mechanics. Direct connection. Honest sound.</div>
+        <div class="subtitulo" id="subtitle"></div>
     </header>
 
     <div class="contenedor-principal">
         
         <div class="seccion-descargas">
-            <h2 class="text-es">Documentación Técnica y Descargas</h2>
-            <h2 class="text-en">Technical Documentation & Downloads</h2>
-            
-            <p class="text-es">Descarga los manuales actualizados con la nueva arquitectura Bit-Perfect y los informes de laboratorio.</p>
-            <p class="text-en">Download the updated manuals featuring the new Bit-Perfect architecture and laboratory reports.</p>
+            <h2 id="downloadsTitle"></h2>
+            <p id="downloadsText"></p>
             
             <div class="grid-descargas">
-                <a href="Lyra_Bitperfect_User_Guide.pdf" class="boton-descarga" download>
-                    <span class="text-es">📄 Guía de Usuario (PDF)</span>
-                    <span class="text-en">📄 User Guide (PDF)</span>
+                <a id="guideLink" href="Lyra_Bitperfect_User_Guide_EN.pdf" class="boton-descarga" download>
+                    <span id="guideButton"></span>
                 </a>
-                <a href="Lyra_Bitperfect_Technical_Report.pdf" class="boton-descarga" download>
-                    <span class="text-es">⚙️ Informe Técnico (PDF)</span>
-                    <span class="text-en">⚙️ Technical Report (PDF)</span>
-                </a>
-                <a href="lyra_source_code.zip" class="boton-descarga" download>
-                    <span class="text-es">📦 Paquete Completo (.ZIP)</span>
-                    <span class="text-en">📦 Documentation Pack (.ZIP)</span>
+                <a id="reportLink" href="Lyra_Bitperfect_Technical_Report_EN.pdf" class="boton-descarga" download>
+                    <span id="reportButton"></span>
                 </a>
             </div>
         </div>
@@ -325,24 +314,18 @@
         <div class="grid-caracteristicas">
             <div class="tarjeta">
                 <img src="dac.jpg" alt="DAC Support" style="max-width: 60px; margin-bottom: 10px;">
-                <h3 class="text-es">Soporte Bit-Perfect DAC</h3>
-                <h3 class="text-en">Bit-Perfect DAC Support</h3>
-                <p class="text-es">Comunicación directa con hardware de audio externo saltándose las limitaciones del mezclador de Android.</p>
-                <p class="text-en">Direct communication with external audio hardware, bypassing the native Android mixer limitations.</p>
+                <h3 id="feature1Title"></h3>
+                <p id="feature1Text"></p>
             </div>
             <div class="tarjeta">
                 <img src="vu%20meter.jpg" alt="VU Meters" style="max-width: 60px; margin-bottom: 10px;">
-                <h3 class="text-es">Monitorización Analógica</h3>
-                <h3 class="text-en">Analog Monitoring</h3>
-                <p class="text-es">Instrumentación balística real que lee directamente la potencia nativa del flujo binario PCM.</p>
-                <p class="text-en">Real ballistic instrumentation reading directly from the raw PCM binary stream power.</p>
+                <h3 id="feature2Title"></h3>
+                <p id="feature2Text"></p>
             </div>
             <div class="tarjeta">
                 <img src="goniometro.jpg" alt="Goniometer" style="max-width: 60px; margin-bottom: 10px;">
-                <h3 class="text-es">Análisis de Fase</h3>
-                <h3 class="text-en">Phase Analysis</h3>
-                <p class="text-es">Visualización en tiempo real de la dispersión estéreo y el comportamiento goniométrico de la señal.</p>
-                <p class="text-en">Real-time visualization of stereo dispersion and goniometric signal phase behavior.</p>
+                <h3 id="feature3Title"></h3>
+                <p id="feature3Text"></p>
             </div>
         </div>
 
@@ -350,41 +333,30 @@
             <div class="contenedor-purista">
                 
                 <div class="bloque-texto-purista">
-                    <h2 class="text-es">Sin Intermediarios: Señal Directa</h2>
-                    <h2 class="text-en">No Intermediaries: Direct Signal</h2>
+                    <h2 id="mainSectionTitle"></h2>
+                    <p id="mainParagraph1"></p>
                     
-                    <p class="text-es">En el software de audio moderno hay una obsesión por corregir, filtrar y procesar la señal. En Lyra creemos en lo contrario.</p>
-                    <p class="text-en">Modern audio software is obsessed with correcting, filtering, and over-processing the signal. At Lyra, we believe in the opposite.</p>
-                    
-                    <div class="analogia-corvette">
-                        <span class="text-es">"Lyra no es un superdeportivo moderno lleno de ayudas electrónicas. Es más parecido a un Corvette del 58. Un motor atmosférico, una conexión directa, metal, carretera y pura respuesta mecánica."</span>
-                        <span class="text-en">"Lyra is not a modern supercar packed with electronic driving aids. It is closer to a '58 Corvette. A naturally aspirated engine, a direct linkage, metal, asphalt, and raw mechanical response."</span>
-                    </div>
+                    <div class="claim-box" id="mainClaim"></div>
 
-                    <p class="text-es">Hemos quitado el ecualizador de raíz. No hay DSP tonal alterando las frecuencias, ni algoritmos artificiales intentando reinterpretar lo que el artista grabó en el estudio. El código pasa íntegramente por un <strong>núcleo nativo en Kotlin</strong> que se aparta del camino para que escuches la música de la forma más transparente y honesta posible.</p>
-                    <p class="text-en">We have completely removed the equalizer. There is no tonal DSP altering frequencies, nor artificial algorithms trying to re-interpret what the artist recorded in the studio. The playback stream flows entirely through a <strong>native Kotlin core</strong> that steps out of the way, delivering the most transparent and honest listening experience possible.</p>
-                    
-                    <p class="text-es">Dispones de controles mecánicos puros para balance espacial y conmutación Mono/Estéreo basados en lógica de atenuación lineal sin coloración.</p>
-                    <p class="text-en">Pure mechanical controls are available for spatial balance and Mono/Stereo switching, built on linear attenuation logic with zero signal coloration.</p>
+                    <p id="mainParagraph2"></p>
+                    <p id="mainParagraph3"></p>
                 </div>
 
                 <div>
                     <div class="bloque-interactivo-imagenes">
-                        <img src="monitor.jpg" alt="Rack de Monitorización Lyra" class="imagen-rack">
+                        <img src="monitor.jpg" alt="Lyra Reference Monitor" class="imagen-rack">
                         <div class="capa-detalle-overlay">
-                            <img src="monitor_detalle.jpg" alt="Certificado Técnico Ampliado" class="imagen-detalle">
+                            <img src="monitor_detalle.jpg" alt="Direct Signal Certificate" class="imagen-detalle">
                         </div>
                     </div>
-                    <div class="pie-interaccion text-es">Pasa el ratón (o toca) sobre el rack para inspeccionar el Certificado de Señal Directa</div>
-                    <div class="pie-interaccion text-en">Hover (or tap) over the rack to inspect the Direct Signal Certificate</div>
+                    <div class="pie-interaccion" id="monitorHint"></div>
                 </div>
 
             </div>
         </div>
 
         <div style="margin-top: 60px; text-align: center;">
-            <h3 class="text-es" style="color: var(--accent-gold); text-transform: uppercase;">Módulos Adicionales</h3>
-            <h3 class="text-en" style="color: var(--accent-gold); text-transform: uppercase;">Additional Modules</h3>
+            <h3 id="modulesTitle" style="color: var(--accent-gold); text-transform: uppercase;"></h3>
             <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px;">
                 <img src="libreria.jpg" alt="Audio Library" style="max-width: 200px; border: 1px solid #242b35; border-radius: 4px;">
                 <img src="led%20verde.jpg" alt="Connected State" style="max-width: 200px; border: 1px solid #242b35; border-radius: 4px;">
@@ -395,41 +367,190 @@
     </div>
 
     <footer>
-        <p class="text-es">© 2026 Lyra Bitperfect. Desarrollado con Flutter y Kotlin para Android.</p>
-        <p class="text-en">© 2026 Lyra Bitperfect. Developed with Flutter and Kotlin for Android.</p>
-        
-        <p class="text-es">"Una interfaz que no parece una app, sino un objeto físico de 5.000€"</p>
-        <p class="text-en">"An interface that doesn't look like an app, but a €5,000 physical object"</p>
+        <p id="footerDeveloped"></p>
+        <p id="footerQuote"></p>
         
         <div class="footer-links">
-            <span class="text-es"><a href="privacy.html" target="_blank">Política de Privacidad</a></span>
-            <span class="text-en"><a href="privacy.html" target="_blank">Privacy Policy</a></span>
+            <a href="privacy.html" target="_blank" id="privacyLink"></a>
         </div>
         
-        <img src="Logo 512.png" alt="Sello de Calidad Lyra Gold" class="footer-logo">
+        <img src="Logo 512.png" alt="Lyra Gold Seal" class="footer-logo">
     </footer>
 
     <script>
-        function setLang(lang) {
-            const body = document.body;
-            const btnEn = document.getElementById('btn-en');
-            const btnEs = document.getElementById('btn-es');
-            
-            btnEn.classList.remove('active');
-            btnEs.classList.remove('active');
-            
-            if (lang === 'es') {
-                body.className = 'lang-es';
-                btnEs.classList.add('active');
-            } else {
-                body.className = 'lang-en';
-                btnEn.classList.add('active');
+        const content = {
+            en: {
+                htmlLang: "en",
+                title: "Lyra Bitperfect | High-Fidelity Audio Player for Android",
+                subtitle: "High-fidelity Android playback with a direct signal path.",
+                downloadsTitle: "Technical Documentation",
+                downloadsText: "Download the user guide and the technical report for the English version.",
+                guideButton: "User Guide (PDF)",
+                reportButton: "Technical Report (PDF)",
+                guideFile: "Lyra_Bitperfect_User_Guide_EN.pdf",
+                reportFile: "Lyra_Bitperfect_Technical_Report_EN.pdf",
+                feature1Title: "USB DAC Support",
+                feature1Text: "USB DAC detection and playback behavior designed for a clean external audio path.",
+                feature2Title: "Real-Time Monitoring",
+                feature2Text: "Analog-style meters show peak level, RMS behavior and dynamic response in real time.",
+                feature3Title: "Phase Visualization",
+                feature3Text: "A goniometer displays stereo image and phase behavior using live signal data.",
+                mainSectionTitle: "Direct Signal Path",
+                mainParagraph1: "Lyra Bitperfect is a high-fidelity Android music player designed for listeners who value clarity, control and minimal processing.",
+                mainClaim: "Built around native Kotlin playback, USB DAC support and real-time analog-style monitoring.",
+                mainParagraph2: "The application avoids tonal DSP and unnecessary sound enhancement. Its purpose is not to reinterpret the recording, but to keep the playback path as direct and transparent as possible.",
+                mainParagraph3: "The interface is inspired by physical Hi-Fi equipment: meters, switches, a rotating CD display and a reference monitor designed to feel precise rather than decorative.",
+                monitorHint: "Hover or tap over the monitor to inspect the Direct Signal Certificate.",
+                modulesTitle: "Additional Modules",
+                footerDeveloped: "© 2026 Lyra Bitperfect. Developed with Flutter and Kotlin for Android.",
+                footerQuote: "An interface that does not look like an app, but like a high-end physical instrument.",
+                privacy: "Privacy Policy"
+            },
+            ja: {
+                htmlLang: "ja",
+                title: "Lyra Bitperfect | Android向け高忠実度オーディオプレーヤー",
+                subtitle: "ダイレクトな信号経路を重視したAndroid向け高忠実度プレーヤー。",
+                downloadsTitle: "技術資料",
+                downloadsText: "日本語版のユーザーガイドと技術レポートをダウンロードできます。",
+                guideButton: "ユーザーガイド（PDF）",
+                reportButton: "技術レポート（PDF）",
+                guideFile: "Lyra_Bitperfect_User_Guide_JA.pdf",
+                reportFile: "Lyra_Bitperfect_Technical_Report_JA.pdf",
+                feature1Title: "USB DAC対応",
+                feature1Text: "外部USB DACを検出し、よりクリーンな外部オーディオ経路での再生を意識した設計です。",
+                feature2Title: "リアルタイム監視",
+                feature2Text: "ピークレベル、RMSの動き、ダイナミックな応答をアナログ機器風のメーターで表示します。",
+                feature3Title: "位相表示",
+                feature3Text: "ライブ信号データを用いて、ステレオイメージと位相の挙動をゴニオメーターで可視化します。",
+                mainSectionTitle: "ダイレクトな信号経路",
+                mainParagraph1: "Lyra Bitperfectは、明瞭さ、制御性、最小限の処理を重視するリスナーのために設計されたAndroid向け高忠実度音楽プレーヤーです。",
+                mainClaim: "ネイティブKotlin再生、USB DAC対応、リアルタイムのアナログ風モニタリングを中心に構成されています。",
+                mainParagraph2: "アプリは音質補正用のDSPや不要なサウンド処理に依存しません。録音を作り替えるのではなく、再生経路をできるだけ直接的で透明に保つことを目的としています。",
+                mainParagraph3: "インターフェースは物理的なHi-Fi機器から着想を得ています。メーター、スイッチ、回転CD表示、Reference Monitorを備え、装飾ではなく精密な操作感を目指しています。",
+                monitorHint: "モニター上にカーソルを置く、またはタップすると、Direct Signal Certificateを確認できます。",
+                modulesTitle: "追加モジュール",
+                footerDeveloped: "© 2026 Lyra Bitperfect。FlutterとKotlinで開発されたAndroid向けプレーヤーです。",
+                footerQuote: "アプリというより、上質な物理オーディオ機器のように感じられるインターフェース。",
+                privacy: "Privacy Policy"
+            },
+            de: {
+                htmlLang: "de",
+                title: "Lyra Bitperfect | High-Fidelity-Audioplayer für Android",
+                subtitle: "High-Fidelity-Wiedergabe für Android mit direktem Signalweg.",
+                downloadsTitle: "Technische Dokumentation",
+                downloadsText: "Laden Sie das Benutzerhandbuch und den technischen Bericht in deutscher Sprache herunter.",
+                guideButton: "Benutzerhandbuch (PDF)",
+                reportButton: "Technischer Bericht (PDF)",
+                guideFile: "Lyra_Bitperfect_User_Guide_DE.pdf",
+                reportFile: "Lyra_Bitperfect_Technical_Report_DE.pdf",
+                feature1Title: "USB-DAC-Unterstützung",
+                feature1Text: "USB-DAC-Erkennung und Wiedergabeverhalten für einen sauberen externen Audiopfad.",
+                feature2Title: "Echtzeit-Monitoring",
+                feature2Text: "Analog gestaltete Instrumente zeigen Peak-Level, RMS-Verhalten und Dynamik in Echtzeit.",
+                feature3Title: "Phasenanalyse",
+                feature3Text: "Ein Goniometer visualisiert Stereobild und Phasenverhalten anhand laufender Signaldaten.",
+                mainSectionTitle: "Direkter Signalweg",
+                mainParagraph1: "Lyra Bitperfect ist ein High-Fidelity-Musikplayer für Android, entwickelt für Hörer, die Klarheit, Kontrolle und minimale Verarbeitung schätzen.",
+                mainClaim: "Im Mittelpunkt stehen native Kotlin-Wiedergabe, USB-DAC-Unterstützung und analog gestaltetes Echtzeit-Monitoring.",
+                mainParagraph2: "Die App verzichtet auf tonalen DSP und unnötige Klangverbesserung. Sie soll die Aufnahme nicht neu interpretieren, sondern den Wiedergabeweg so direkt und transparent wie möglich halten.",
+                mainParagraph3: "Die Oberfläche ist von physischer Hi-Fi-Hardware inspiriert: Instrumente, Schalter, rotierende CD-Anzeige und Reference Monitor wirken präzise statt dekorativ.",
+                monitorHint: "Bewegen Sie den Mauszeiger über den Monitor oder tippen Sie darauf, um das Direct Signal Certificate zu prüfen.",
+                modulesTitle: "Zusätzliche Module",
+                footerDeveloped: "© 2026 Lyra Bitperfect. Entwickelt mit Flutter und Kotlin für Android.",
+                footerQuote: "Eine Oberfläche, die nicht wie eine App wirkt, sondern wie ein hochwertiges physisches Instrument.",
+                privacy: "Privacy Policy"
+            },
+            ko: {
+                htmlLang: "ko",
+                title: "Lyra Bitperfect | Android용 고음질 오디오 플레이어",
+                subtitle: "직접적인 신호 경로를 중심으로 설계된 Android용 고음질 플레이어.",
+                downloadsTitle: "기술 문서",
+                downloadsText: "한국어 사용자 가이드와 기술 보고서를 다운로드할 수 있습니다.",
+                guideButton: "사용자 가이드 (PDF)",
+                reportButton: "기술 보고서 (PDF)",
+                guideFile: "Lyra_Bitperfect_User_Guide_KO.pdf",
+                reportFile: "Lyra_Bitperfect_Technical_Report_KO.pdf",
+                feature1Title: "USB DAC 지원",
+                feature1Text: "외부 USB DAC 감지와 깨끗한 외부 오디오 경로를 고려한 재생 구조를 제공합니다.",
+                feature2Title: "실시간 모니터링",
+                feature2Text: "아날로그 스타일 미터가 피크 레벨, RMS 동작, 다이내믹 응답을 실시간으로 표시합니다.",
+                feature3Title: "위상 시각화",
+                feature3Text: "고니오미터가 실시간 신호 데이터를 기반으로 스테레오 이미지와 위상 동작을 보여줍니다.",
+                mainSectionTitle: "직접 신호 경로",
+                mainParagraph1: "Lyra Bitperfect는 선명도, 제어감, 최소한의 처리를 중시하는 사용자를 위해 설계된 Android용 고음질 음악 플레이어입니다.",
+                mainClaim: "네이티브 Kotlin 재생, USB DAC 지원, 실시간 아날로그 스타일 모니터링을 중심으로 구성되어 있습니다.",
+                mainParagraph2: "이 앱은 톤 보정 DSP나 불필요한 음향 보강에 의존하지 않습니다. 녹음을 재해석하기보다 가능한 한 직접적이고 투명한 재생 경로를 유지하는 데 목적이 있습니다.",
+                mainParagraph3: "인터페이스는 물리적인 Hi-Fi 장비에서 영감을 받았습니다. 미터, 스위치, 회전 CD 표시, Reference Monitor는 장식보다 정밀한 조작감을 지향합니다.",
+                monitorHint: "모니터 위에 커서를 올리거나 탭하면 Direct Signal Certificate를 확인할 수 있습니다.",
+                modulesTitle: "추가 모듈",
+                footerDeveloped: "© 2026 Lyra Bitperfect. Android용으로 Flutter와 Kotlin을 사용해 개발되었습니다.",
+                footerQuote: "앱처럼 보이기보다 고급 물리 오디오 장비처럼 느껴지는 인터페이스.",
+                privacy: "Privacy Policy"
+            },
+            es: {
+                htmlLang: "es",
+                title: "Lyra Bitperfect | Reproductor de audio de alta fidelidad para Android",
+                subtitle: "Reproducción de alta fidelidad para Android con ruta de señal directa.",
+                downloadsTitle: "Documentación técnica",
+                downloadsText: "Descarga la guía de usuario y el informe técnico en español.",
+                guideButton: "Guía de usuario (PDF)",
+                reportButton: "Informe técnico (PDF)",
+                guideFile: "Lyra_Bitperfect_User_Guide_ES.pdf",
+                reportFile: "Lyra_Bitperfect_Technical_Report_ES.pdf",
+                feature1Title: "Soporte USB DAC",
+                feature1Text: "Detección de DAC USB y comportamiento de reproducción orientado a una ruta de audio externa limpia.",
+                feature2Title: "Monitorización en tiempo real",
+                feature2Text: "Instrumentos de estilo analógico muestran pico, RMS y respuesta dinámica en tiempo real.",
+                feature3Title: "Visualización de fase",
+                feature3Text: "El goniómetro muestra la imagen estéreo y el comportamiento de fase usando datos reales de señal.",
+                mainSectionTitle: "Ruta de señal directa",
+                mainParagraph1: "Lyra Bitperfect es un reproductor musical de alta fidelidad para Android diseñado para oyentes que valoran claridad, control y procesamiento mínimo.",
+                mainClaim: "Construido alrededor de reproducción nativa en Kotlin, soporte USB DAC y monitorización analógica en tiempo real.",
+                mainParagraph2: "La aplicación evita DSP tonal y mejoras artificiales innecesarias. Su objetivo no es reinterpretar la grabación, sino mantener la ruta de reproducción lo más directa y transparente posible.",
+                mainParagraph3: "La interfaz está inspirada en equipos Hi-Fi físicos: medidores, interruptores, CD giratorio y un Reference Monitor diseñado para transmitir precisión, no decoración.",
+                monitorHint: "Pasa el ratón o toca sobre el monitor para inspeccionar el Direct Signal Certificate.",
+                modulesTitle: "Módulos adicionales",
+                footerDeveloped: "© 2026 Lyra Bitperfect. Desarrollado con Flutter y Kotlin para Android.",
+                footerQuote: "Una interfaz que no parece una app, sino un instrumento físico de alta gama.",
+                privacy: "Privacy Policy"
             }
+        };
+
+        const fields = [
+            "subtitle", "downloadsTitle", "downloadsText", "guideButton", "reportButton",
+            "feature1Title", "feature1Text", "feature2Title", "feature2Text", "feature3Title",
+            "feature3Text", "mainSectionTitle", "mainParagraph1", "mainClaim", "mainParagraph2",
+            "mainParagraph3", "monitorHint", "modulesTitle", "footerDeveloped", "footerQuote"
+        ];
+
+        function setLang(lang) {
+            const data = content[lang] || content.en;
+
+            document.documentElement.lang = data.htmlLang;
+            document.title = data.title;
+
+            fields.forEach(function(id) {
+                const el = document.getElementById(id);
+                if (el) el.textContent = data[id];
+            });
+
+            const guideLink = document.getElementById("guideLink");
+            const reportLink = document.getElementById("reportLink");
+            guideLink.href = data.guideFile;
+            reportLink.href = data.reportFile;
+
+            document.getElementById("privacyLink").textContent = data.privacy;
+
+            document.querySelectorAll(".lang-btn").forEach(function(btn) {
+                btn.classList.remove("active");
+            });
+
+            const activeButton = document.getElementById("btn-" + lang);
+            if (activeButton) activeButton.classList.add("active");
         }
 
-        // Esta función fuerza la activación del idioma inglés por defecto nada más cargarse el DOM
         document.addEventListener("DOMContentLoaded", function() {
-            setLang('en');
+            setLang("en");
         });
     </script>
 
